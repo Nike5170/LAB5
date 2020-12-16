@@ -34,7 +34,7 @@ pipeline
   } // stage Build
   stage('Test')
   {
-   
+   agent any
    steps
    {
     sh 'apk add --update python3 py-pip'
