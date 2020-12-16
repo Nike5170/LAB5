@@ -23,7 +23,7 @@ pipeline
   {
       agent any
       steps{
-          junit 
+          junit test.py
       }
    steps
    {
