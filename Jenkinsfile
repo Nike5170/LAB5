@@ -18,14 +18,6 @@ pipeline
   } // stage Build
   stage('Build')
   {
-   steps
-   {
-    echo "Building ...${BUILD_NUMBER}"
-    echo "Build completed"
-   }
-  } // stage Build
-  stage('Test')
-  {
    agent
    {
     docker
@@ -34,6 +26,15 @@ pipeline
      args '-u=\"root\"'
     }
    }
+   steps
+   {
+    echo "Building ...${BUILD_NUMBER}"
+    echo "Build completed"
+   }
+  } // stage Build
+  stage('Test')
+  {
+   
    steps
    {
     sh 'apk add --update python3 py-pip'
