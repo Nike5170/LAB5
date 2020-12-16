@@ -1,9 +1,6 @@
 pipeline
 {
-    environment {
-        registryCredential = 'dockerhub'
-        dockerImage = ''
-    }
+
  options
  {
   timestamps()
@@ -21,10 +18,6 @@ pipeline
   } // stage Build
   stage('Build')
   {
-      agent any
-      steps{
-          junit test.py
-      }
    steps
    {
     echo "Building ...${BUILD_NUMBER}"
@@ -37,14 +30,16 @@ pipeline
    {
     docker
     {
-     image 'python:3.8.5'
+     image 'alpine'
      args '-u=\"root\"'
     }
    }
    steps
    {
-    sh 'pip install --no-cache-dir -r ./Requirements.txt'
-    sh 'python3 test.py'
+    sh 'apk add --update python3 py-pip'
+    sh 'pip install Flask'
+    sh 'pip install xmlrunner'
+    sh 'python3 app_tests.py'
    }
    post
    {
