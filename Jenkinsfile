@@ -21,6 +21,10 @@ pipeline
   } // stage Build
   stage('Build')
   {
+      agent any
+      steps{
+          junit 
+      }
    steps
    {
     echo "Building ...${BUILD_NUMBER}"
