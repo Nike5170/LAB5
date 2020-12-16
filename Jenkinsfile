@@ -33,7 +33,7 @@ pipeline
    {
     docker
     {
-     image 'python:3.8.6-slim'
+     image 'python:3.8.5'
      args '-u=\"root\"'
     }
    }
